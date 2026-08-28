@@ -1,0 +1,19 @@
+# Execuções e resultados
+campanha-provisionamento-*/
+campanha-launcher.log
+*.log
+
+# Temporários
+*.tmp
+*.swp
+*~
+
+# Credenciais / ambiente
+.env
+.env.*
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.pyc
