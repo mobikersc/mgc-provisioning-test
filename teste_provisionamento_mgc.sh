@@ -186,7 +186,7 @@ Exemplos:
   ./teste_provisionamento_mgc.sh
 
   ./teste_provisionamento_mgc.sh --product vm --zones br-se1-a,br-ne1-b \
-    --ssh-key mmelo-tkpd --image 'cloud-ubuntu-24.04 LTS' --machine-type BV1-1-10
+    --ssh-key minha-chave --image 'cloud-ubuntu-24.04 LTS' --machine-type BV1-1-10
 
   ./teste_provisionamento_mgc.sh --product object-storage --regions br-se1,br-ne1
 
@@ -285,7 +285,7 @@ sanitize_tag() {
 derive_owner_from_ssh_key() {
   local key="$1" candidate
   # Usa a parte anterior ao primeiro hífen ou underscore.
-  # Exemplo: mmelo-tkpd -> mmelo; joao.silva-notebook -> joao-silva.
+  # Exemplo: usuario-chave -> usuario; joao.silva-notebook -> joao-silva.
   candidate="${key%%[-_]*}"
   candidate="$(sanitize_tag "$candidate")"
   [[ -n "$candidate" ]] || candidate="$(sanitize_tag "$key")"

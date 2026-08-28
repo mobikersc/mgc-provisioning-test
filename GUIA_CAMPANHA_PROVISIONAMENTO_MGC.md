@@ -30,7 +30,7 @@ Exemplo para VM nas cinco AZs:
   -- \
   --product vm \
   --zones br-se1-a,br-se1-b,br-se1-c,br-ne1-a,br-ne1-b \
-  --ssh-key mmelo-tkpd \
+  --ssh-key minha-chave \
   --image 'cloud-ubuntu-24.04 LTS' \
   --machine-type BV1-1-10 \
   --public-ip true \

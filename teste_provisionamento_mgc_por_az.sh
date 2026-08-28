@@ -131,7 +131,7 @@ fail() { printf 'ERRO: %s\n' "$*" >&2; exit 1; }
 usage() {
   cat <<'USAGE'
 Uso:
-  ./teste_provisionamento_mgc.sh [opções]
+  ./teste_provisionamento_mgc_por_az.sh [opções]
 
 Produtos:
   --product vm|volume|object-storage|k8s|dbaas
@@ -183,17 +183,17 @@ DBaaS:
 
 Exemplos:
   mgc auth login
-  ./teste_provisionamento_mgc.sh
+  ./teste_provisionamento_mgc_por_az.sh
 
-  ./teste_provisionamento_mgc.sh --product vm --zones br-se1-a,br-ne1-b \
-    --ssh-key mmelo-tkpd --image 'cloud-ubuntu-24.04 LTS' --machine-type BV1-1-10
+  ./teste_provisionamento_mgc_por_az.sh --product vm --zones br-se1-a,br-ne1-b \
+    --ssh-key minha-chave --image 'cloud-ubuntu-24.04 LTS' --machine-type BV1-1-10
 
-  ./teste_provisionamento_mgc.sh --product object-storage --regions br-se1,br-ne1
+  ./teste_provisionamento_mgc_por_az.sh --product object-storage --regions br-se1,br-ne1
 
-  ./teste_provisionamento_mgc.sh --product k8s --regions br-se1 --azs a,b \
+  ./teste_provisionamento_mgc_por_az.sh --product k8s --regions br-se1 --azs a,b \
     --k8s-machine-type BV2-4-40 --k8s-replicas 1
 
-  ./teste_provisionamento_mgc.sh --product dbaas --zones br-se1-a \
+  ./teste_provisionamento_mgc_por_az.sh --product dbaas --zones br-se1-a \
     --dbaas-engine PostgreSQL
 USAGE
 }
@@ -285,7 +285,7 @@ sanitize_tag() {
 derive_owner_from_ssh_key() {
   local key="$1" candidate
   # Usa a parte anterior ao primeiro hífen ou underscore.
-  # Exemplo: mmelo-tkpd -> mmelo; joao.silva-notebook -> joao-silva.
+  # Exemplo: usuario-chave -> usuario; joao.silva-notebook -> joao-silva.
   candidate="${key%%[-_]*}"
   candidate="$(sanitize_tag "$candidate")"
   [[ -n "$candidate" ]] || candidate="$(sanitize_tag "$key")"
